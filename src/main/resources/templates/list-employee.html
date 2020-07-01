@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>List employee</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="col-6">
+            <div style="text-align: center">
+                <h2>List employee</h2>
+            </div>
+            <div>
+                <form action="/" method="get">
+                    <input type="text" name="name">
+                    <button>Search</button>
+                </form>
+            </div>
+            <div>
+                <a href="/create"><button class="btn btn-primary">Create employee</button></a>
+            </div>
+            <div>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Wave</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="employee : ${pagination.getContent()}">
+                        <th scope="row" th:text="${employee.id}"></th>
+                        <td th:text="${employee.name}"></td>
+                        <td th:text="${employee.wage}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
